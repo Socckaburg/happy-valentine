@@ -92,14 +92,18 @@
 </div>
 
 <script>
-  function startSite(){
-    goPage('loading');
-    setTimeout(() => {
-      goPage('page1');
-    }, 2500);
+  function goPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
   }
 
-  function goPage(id) {
+  // tampilkan loading dulu, baru ke page 1
+  goPage('loading');
+  setTimeout(() => {
+    goPage('page1');
+  }, 2500);
+
+  (id) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById(id).classList.add('active');
   }
