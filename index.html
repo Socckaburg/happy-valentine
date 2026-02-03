@@ -94,7 +94,16 @@
 <script>
   // pastikan loading tampil saat pertama kali buka halaman
   document.addEventListener('DOMContentLoaded', () => {
-    goPage('loading');
+    // tampilkan loading dulu
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('loading').classList.add('active');
+
+    // setelah loading, pindah ke page 1
+    setTimeout(() => {
+      document.getElementById('loading').classList.remove('active');
+      document.getElementById('page1').classList.add('active');
+    }, 2500);
+  });
     setTimeout(() => {
       goPage('page1');
     }, 2500);
