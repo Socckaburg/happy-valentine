@@ -106,7 +106,7 @@ button:hover {
 
   <!-- HOME -->
   <div id="home" class="page">
-    <h1>Happy Valentine my ptretty babyy💗</h1>
+    <h1>Happy Valentine My Ptretty Babyy💗</h1>
     <p>aku buatin ini khusus buat kamu</p>
     <button onclick="playMusic()">Play Music 🎵</button>
     <button onclick="showPage('letter')">Letter ✉️</button>
@@ -127,11 +127,15 @@ button:hover {
 </div>
 
   <!-- QUESTION -->
-  <div id="question" class="page">
-    <h2>you still love kann yaaaa... 🥺</h2>
-    <button onclick="showPage('final')">Yes 💕</button>
-    <button onclick="nope()">No</button>
-  </div>
+  <!-- QUESTION -->
+<div id="question" class="page">
+  <h2>kamu masih sayang aku kan? 🥺</h2>
+  <p id="no-msg" style="margin:10px 0; font-size:16px;"></p>
+
+  <button onclick="showPage('final')">Yes 💕</button>
+  <button id="no-btn" onclick="nope()">No</button>
+</div>
+
 
   <!-- FINAL -->
   <div id="final" class="page">
@@ -160,9 +164,13 @@ function playMusic() {
 }
 
 /* NO BUTTON */
+<script>
 function nope() {
-  alert("ihhhh kok pencett no😭");
+  document.getElementById("no-msg").innerText = "ih kok bohong 😭";
+  document.getElementById("no-btn").style.display = "none";
 }
+</script>
+
 
 /* FALLING EFFECT */
 setInterval(() => {
