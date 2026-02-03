@@ -3,44 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Untuk Sayangku</title>
+<title>Untuk Sayangku 💗</title>
 
 <style>
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
 
-body {
-  margin: 0;
-  background: #ffc0cb;
-  color: #d81b60;
+html, body {
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 
-/* PAGE SYSTEM */
+#app {
+  width: 100vw;
+  height: 100vh;
+  background: #ffc0cb;
+  position: relative;
+}
+
+/* PAGE */
 .page {
   position: absolute;
   inset: 0;
   display: none;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   text-align: center;
   padding: 20px;
-  z-index: 10;
+  color: #d81b60;
 }
 
 .page.active {
   display: flex;
 }
 
-/* LOADING */
+/* LOADER */
 .loader {
   width: 50px;
   height: 50px;
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid #d81b60;
+  border: 6px solid #fff;
+  border-top: 6px solid #d81b60;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-top: 20px;
@@ -53,9 +61,9 @@ body {
 /* BUTTON */
 button {
   background: #d81b60;
-  color: #fff;
+  color: white;
   border: none;
-  padding: 15px 30px;
+  padding: 14px 28px;
   margin: 10px;
   border-radius: 25px;
   font-size: 16px;
@@ -63,118 +71,105 @@ button {
 }
 
 button:hover {
-  transform: scale(1.1);
-}
-
-/* LETTER */
-#letter-content {
-  background: white;
-  color: #d81b60;
-  padding: 20px;
-  border-radius: 15px;
-  max-width: 500px;
-  line-height: 1.6;
-  margin-bottom: 20px;
+  transform: scale(1.05);
 }
 
 /* FALLING */
-.falling {
+.fall {
   position: absolute;
   top: -10%;
-  pointer-events: none;
+  font-size: 20px;
   animation: fall linear forwards;
+  pointer-events: none;
 }
 
 @keyframes fall {
-  to { transform: translateY(110vh) rotate(360deg); }
+  to { transform: translateY(110vh); }
 }
 </style>
 </head>
 
 <body>
 
-<!-- AUDIO (LOCAL & AMAN) -->
 <audio id="music" loop>
-  <source src="drive-me-crazy.mp3" type="audio/mpeg">
+  <!-- GANTI dengan file mp3 kamu -->
+  <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- LOADING -->
-<div id="loading" class="page active">
-  <h2>sabar dulu yaa sayangkuu loading bentar</h2>
-  <div class="loader"></div>
-</div>
+<div id="app">
 
-<!-- PAGE 1 -->
-<div id="page1" class="page">
-  <h1>happy valentine my sweet baby</h1>
-  <p>hai sayang ini kado valentine kamu dari aku</p>
-  <button onclick="playMusic()">Musik 🎵</button>
-  <button onclick="showPage('page2')">Letter ✉️</button>
-</div>
-
-<!-- PAGE 2 -->
-<div id="page2" class="page">
-  <div id="letter-content">
-    haiiii... sayangkuuuuu. selamat hari valentine sayangkuuu, aku buatin ini khusus kamu sayang,
-    aku mau bilang sama kamu kalo aku ga cuman sayang sama kamu di saat valentine aja,
-    aku selalu sayang sama kamu itu 24/7/365 hehe.
-    makasihh yaaa sayangg sudah mau sama akuuu emwahhh...
+  <!-- LOADING -->
+  <div id="loading" class="page active">
+    <h2>loading bentar yaa sayang 💕</h2>
+    <div class="loader"></div>
   </div>
-  <button onclick="showPage('page3')">click me for surprise</button>
-</div>
 
-<!-- PAGE 3 -->
-<div id="page3" class="page">
-  <h1>hiiii.. babyy u still love me yakannn....</h1>
-  <p id="desc3">make sure kamu pencet yes</p>
-  <button onclick="showPage('page-final')">Yes</button>
-  <button id="no-btn" onclick="handleNo()">No</button>
-</div>
+  <!-- HOME -->
+  <div id="home" class="page">
+    <h1>Happy Valentine 💗</h1>
+    <p>aku buatin ini khusus buat kamu</p>
+    <button onclick="playMusic()">Play Music 🎵</button>
+    <button onclick="showPage('letter')">Letter ✉️</button>
+  </div>
 
-<!-- FINAL -->
-<div id="page-final" class="page">
-  <h1>yeaayyy know it u still love me 💗</h1>
-  <p>love you more sayanggku</p>
+  <!-- LETTER -->
+  <div id="letter" class="page">
+    <p>
+      hai sayangkuuu 💖  
+      aku selalu sayang kamu 24/7/365  
+      makasih ya sudah jadi bagian hidup aku 🤍
+    </p>
+    <button onclick="showPage('question')">Next 💌</button>
+  </div>
+
+  <!-- QUESTION -->
+  <div id="question" class="page">
+    <h2>kamu masih sayang aku kan? 🥺</h2>
+    <button onclick="showPage('final')">Yes 💕</button>
+    <button onclick="nope()">No</button>
+  </div>
+
+  <!-- FINAL -->
+  <div id="final" class="page">
+    <h1>YEAAY 💖</h1>
+    <p>aku sayang kamu selamanya</p>
+  </div>
+
 </div>
 
 <script>
-// LOADING → PAGE 1
+/* LOADING AUTO */
 setTimeout(() => {
-  showPage('page1');
+  showPage('home');
 }, 3000);
 
-// PAGE SWITCH
+/* PAGE SWITCH */
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 
-// MUSIC PLAY (1:50)
+/* MUSIC */
 function playMusic() {
   const music = document.getElementById('music');
-  music.currentTime = 110;
   music.play();
 }
 
-// NO BUTTON
-function handleNo() {
-  document.getElementById('desc3').innerText = 'kok pencet no 😢';
-  document.getElementById('no-btn').style.display = 'none';
+/* NO BUTTON */
+function nope() {
+  alert("ih jangan boong 😭");
 }
 
-// FALLING EFFECT
-function createFalling() {
-  const items = ['🌸','💗','💖','🌺'];
-  const el = document.createElement('div');
-  el.className = 'falling';
-  el.innerText = items[Math.floor(Math.random()*items.length)];
-  el.style.left = Math.random()*100+'vw';
-  el.style.fontSize = Math.random()*20+10+'px';
-  el.style.animationDuration = Math.random()*3+2+'s';
-  document.body.appendChild(el);
-  setTimeout(()=>el.remove(),5000);
-}
-setInterval(createFalling,300);
+/* FALLING EFFECT */
+setInterval(() => {
+  const e = document.createElement('div');
+  e.className = 'fall';
+  e.innerText = ['💗','🌸','💖'][Math.floor(Math.random()*3)];
+  e.style.left = Math.random()*100 + 'vw';
+  e.style.animationDuration = (Math.random()*3+2) + 's';
+  document.body.appendChild(e);
+  setTimeout(() => e.remove(), 5000);
+}, 300);
 </script>
 
 </body>
