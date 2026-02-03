@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Valentine</title>
+  <style>
+    * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body {
+      margin: 0;
+      background: #ffc0d9;
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+    }
+    .page {
+      display: none;
+      height: 100vh;
+      padding: 40px 20px;
+    }
+    .active { display: block; }
+    h1 { font-size: 26px; margin-bottom: 15px; }
+    p { font-size: 15px; }
+    .btn {
+      margin: 15px;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .white { background: #fff; color: #ff4f9a; }
+    .loading-text { margin-bottom: 20px; }
+    
+.fall {
+      position: fixed;
+      top: -50px;
+      font-size: 18px;
+      animation: fall linear infinite;
+    }
+    .loader{width:60px;height:60px;border:6px solid #fff;border-top:6px solid #ff4f9a;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto;}@keyframes spin{to{transform:rotate(360deg);}}
+
+@keyframes fall {
+      to { transform: translateY(110vh); }
+    }
+  </style>
+</head>
+<body>
+
+
+
+<audio id="music" loop>
+  <source src="drive-me-crazy.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Loading Page -->
+<div id="loading" class="page">
+  <p class="loading-text">sabar dulu yaa sayangkuu loading bentar</p>
+  <div class="loader"></div>
+</div>
+
+<!-- Page 1 -->
+<div id="page1" class="page">
+  <h1>happy valentine my sweet baby</h1>
+  <p>hai sayang ini kado valentine kamu dari aku</p>
+  <button class="btn white" onclick="playMusic()">music</button>
+  <button class="btn white" onclick="goPage('page2')">letter</button>
+</div>
+
+
+
+<!-- Page 2 -->
+<div id="page2" class="page">
+  <p style="background:#fff;color:#ff4f9a;padding:20px;border-radius:20px;">
+    haiiii... sayangkuuuuu. selamat hari valentine sayangkuuu, aku buatin ini khusus kamu sayang, aku mau bilang sama kamu kalo aku ga cuman sayang sama kamu di saat valentine aja aku selalu sayang sama kamu itu 24/7/365 hehe. oiya sayangg maafin aku yaaa kalo selalu kekanak kanakkan hehe biasalahh namanya cowo, aku cuman bisa kasih ini buat kamu sayang maaf yaa gabisa kasih yg something special i hope u like it karna aku buatnya pake hati, oiya kenapa lagunyaa ituu karna kamu membuat aku kecintaann hehehe. makasihh yaaa sayangg sudah mau sama akuuu emwahhh...
+  </p>
+  <button class="btn white" onclick="goPage('page3')">click me for surprise</button>
+</div>
+
+<!-- Page 3 -->
+<div id="page3" class="page">
+  <h1>hiiii.. babyy u still love me yakannn....</h1>
+  <p id="desc">make sure kamu pencet yes</p>
+  <button class="btn white" onclick="yesLove()">Yes</button>
+  <button id="noBtn" class="btn white" onclick="noLove()">No</button>
+</div>
+
+<!-- Page 4 -->
+<div id="page4" class="page">
+  <h1>yeaayyy know it u still love me</h1>
+  <p>love you more sayanggku</p>
+</div>
+
+<script>
+  function startSite(){
+    goPage('loading');
+    setTimeout(() => {
+      goPage('page1');
+    }, 2500);
+  }
+
+  function goPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  function playMusic() {
+    const music = document.getElementById('music');
+    music.currentTime = 110;
+    music.play();
+    closePopup();
+  }
+
+  function noLove() {
+    document.getElementById('desc').innerText = 'kok pencet no';
+    document.getElementById('noBtn').style.display = 'none';
+  }
+
+  function yesLove() {
+    goPage('page4');
+  }
+
+  
+
+  setTimeout(() => {
+    goPage('page1');
+  }, 2500);
+
+  // efek jatuh
+  setInterval(() => {
+    const el = document.createElement('div');
+    el.className = 'fall';
+    el.innerText = Math.random() > 0.5 ? '🌸' : '💗';
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.animationDuration = (3 + Math.random() * 5) + 's';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 8000);
+  }, 300);
+</script>
+
+</body>
+</html>
