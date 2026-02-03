@@ -1,163 +1,181 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Untuk Sayangku</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #ffc0cb; /* Pink background */
-            font-family: 'Arial', sans-serif;
-            overflow: hidden; /* Hide overflow for falling elements */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: #d81b60; /* Darker pink text */
-            text-align: center;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Sayangku</title>
 
-        .page { display: none; flex-direction: column; align-items: center; z-index: 10; padding: 20px; }
-        .active { display: flex; }
+<style>
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-        /* Loading Screen Styles */
-        #loading-screen { display: flex; }
-        .loader {
-            border: 8px solid #f3f3f3;
-            border-top: 8px solid #d81b60;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin-top: 20px;
-        }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+body {
+  margin: 0;
+  background: #ffc0cb;
+  color: #d81b60;
+  overflow: hidden;
+}
 
-        /* Buttons Styles */
-        button {
-            background-color: #d81b60;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            margin: 10px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: transform 0.2s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        button:hover { transform: scale(1.1); }
+/* PAGE SYSTEM */
+.page {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  z-index: 10;
+}
 
-        /* Falling Decorations Styles */
-        .falling {
-            position: absolute;
-            top: -10%;
-            pointer-events: none;
-            animation: fall linear forwards;
-        }
-        @keyframes fall {
-            to { transform: translateY(110vh) rotate(360deg); }
-        }
+.page.active {
+  display: flex;
+}
 
-        /* Popup Letter Style */
-        #letter-content {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            max-width: 80%;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-    </style>
+/* LOADING */
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #d81b60;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-top: 20px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* BUTTON */
+button {
+  background: #d81b60;
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  margin: 10px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+/* LETTER */
+#letter-content {
+  background: white;
+  color: #d81b60;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 500px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* FALLING */
+.falling {
+  position: absolute;
+  top: -10%;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+</style>
 </head>
+
 <body>
 
-    <!-- Music Player (Hidden) -->
-    <iframe id="music-player" width="0" height="0" src="" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+<!-- AUDIO (LOCAL & AMAN) -->
+<audio id="music" loop>
+  <source src="drive-me-crazy.mp3" type="audio/mpeg">
+</audio>
 
-    <!-- 1. Loading Page -->
-    <div id="loading-screen" class="page active">
-        <h2>sabar dulu yaa sayangkuu loading bentar</h2>
-        <div class="loader"></div>
-    </div>
+<!-- LOADING -->
+<div id="loading" class="page active">
+  <h2>sabar dulu yaa sayangkuu loading bentar</h2>
+  <div class="loader"></div>
+</div>
 
-    <!-- 2. Home Page -->
-    <div id="page1" class="page">
-        <h1>happy valentine my sweet baby</h1>
-        <p>hai sayang ini kado valentine kamu dari aku</p>
-        <div class="buttons">
-            <button onclick="playMusic()">Musik 🎵</button>
-            <button onclick="showPage('page2')">Letter ✉️</button>
-        </div>
-    </div>
+<!-- PAGE 1 -->
+<div id="page1" class="page">
+  <h1>happy valentine my sweet baby</h1>
+  <p>hai sayang ini kado valentine kamu dari aku</p>
+  <button onclick="playMusic()">Musik 🎵</button>
+  <button onclick="showPage('page2')">Letter ✉️</button>
+</div>
 
-    <!-- 3. Letter Page -->
-    <div id="page2" class="page">
-        <div id="letter-content">
-            haiiii... sayangkuuuuu. selamat hari valentine sayangkuuu, aku buatin ini khusus kamu sayang, aku mau bilang sama kamu kalo aku ga cuman sayang sama kamu di saat valentine aja aku selalu sayang sama kamu itu 24/7/365 hehe. oiya sayangg maafin aku yaaa kalo selalu kekanak kanakkan hehe biasalahh namanya cowo, aku cuman bisa kasih ini buat kamu sayang maaf yaaa gabisa kasih yg something special i hope u like it karna aku buatnya pake hati, oiya kenapa lagunyaa ituu karna kamu membuat aku kecintaann hehehe. makasihh yaaa sayangg sudah mau sama akuuu emwahhh...
-        </div>
-        <button onclick="showPage('page3')">click me for surprise</button>
-    </div>
+<!-- PAGE 2 -->
+<div id="page2" class="page">
+  <div id="letter-content">
+    haiiii... sayangkuuuuu. selamat hari valentine sayangkuuu, aku buatin ini khusus kamu sayang,
+    aku mau bilang sama kamu kalo aku ga cuman sayang sama kamu di saat valentine aja,
+    aku selalu sayang sama kamu itu 24/7/365 hehe.
+    makasihh yaaa sayangg sudah mau sama akuuu emwahhh...
+  </div>
+  <button onclick="showPage('page3')">click me for surprise</button>
+</div>
 
-    <!-- 4. Question Page -->
-    <div id="page3" class="page">
-        <h1>hiiii.. babyy u still love me yakannn....</h1>
-        <p id="desc3">make sure kamu pencet yes</p>
-        <div id="btn-container">
-            <button onclick="showPage('page-final')">Yes</button>
-            <button id="no-btn" onclick="handleNo()">No</button>
-        </div>
-    </div>
+<!-- PAGE 3 -->
+<div id="page3" class="page">
+  <h1>hiiii.. babyy u still love me yakannn....</h1>
+  <p id="desc3">make sure kamu pencet yes</p>
+  <button onclick="showPage('page-final')">Yes</button>
+  <button id="no-btn" onclick="handleNo()">No</button>
+</div>
 
-    <!-- 5. Final Page -->
-    <div id="page-final" class="page">
-        <h1>yeaayyy know it u still lve me, love you more sayanggku</h1>
-    </div>
+<!-- FINAL -->
+<div id="page-final" class="page">
+  <h1>yeaayyy know it u still love me 💗</h1>
+  <p>love you more sayanggku</p>
+</div>
 
-    <script>
-        // Loading Logic: hide loading after 3 seconds
-        setTimeout(() => {
-            document.getElementById('loading-screen').classList.remove('active');
-            document.getElementById('page1').classList.add('active');
-        }, 3000);
+<script>
+// LOADING → PAGE 1
+setTimeout(() => {
+  showPage('page1');
+}, 3000);
 
-        // Function to switch between pages
-        function showPage(id) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-        }
+// PAGE SWITCH
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
 
-        // Function to play music on button click
-        function playMusic() {
-            // Memulai Lil Yachty - Drive Me Crazy dari menit 1:50 (110 detik)
-            const player = document.getElementById('music-player');
-            player.src = "https://www.youtube.com";
-            alert("Musik dimulai! 🎵");
-        }
+// MUSIC PLAY (1:50)
+function playMusic() {
+  const music = document.getElementById('music');
+  music.currentTime = 110;
+  music.play();
+}
 
-        // Handle 'No' button click
-        function handleNo() {
-            document.getElementById('desc3').innerText = "kok pencet no :(";
-            document.getElementById('no-btn').style.display = 'none';
-        }
+// NO BUTTON
+function handleNo() {
+  document.getElementById('desc3').innerText = 'kok pencet no 😢';
+  document.getElementById('no-btn').style.display = 'none';
+}
 
-        // Falling Flowers & Hearts Animation
-        function createFalling() {
-            const items = ['🌸', '💗', '💖', '🌺'];
-            const item = document.createElement('div');
-            item.className = 'falling';
-            item.innerText = items[Math.floor(Math.random() * items.length)];
-            item.style.left = Math.random() * 100 + 'vw';
-            item.style.fontSize = Math.random() * 20 + 10 + 'px';
-            item.style.animationDuration = Math.random() * 3 + 2 + 's';
-            
-            document.body.appendChild(item);
-            setTimeout(() => item.remove(), 5000);
-        }
-        setInterval(createFalling, 300);
-    </script>
+// FALLING EFFECT
+function createFalling() {
+  const items = ['🌸','💗','💖','🌺'];
+  const el = document.createElement('div');
+  el.className = 'falling';
+  el.innerText = items[Math.floor(Math.random()*items.length)];
+  el.style.left = Math.random()*100+'vw';
+  el.style.fontSize = Math.random()*20+10+'px';
+  el.style.animationDuration = Math.random()*3+2+'s';
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),5000);
+}
+setInterval(createFalling,300);
+</script>
+
 </body>
 </html>
