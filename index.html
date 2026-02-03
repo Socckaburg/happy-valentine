@@ -54,7 +54,7 @@
 </audio>
 
 <!-- Loading Page -->
-<div id="loading" class="page">
+<div id="loading" class="page active">
   <p class="loading-text">sabar dulu yaa sayangkuu loading bentar</p>
   <div class="loader"></div>
 </div>
@@ -92,6 +92,13 @@
 </div>
 
 <script>
+  // pastikan loading tampil saat pertama kali buka halaman
+  document.addEventListener('DOMContentLoaded', () => {
+    goPage('loading');
+    setTimeout(() => {
+      goPage('page1');
+    }, 2500);
+  });
   function goPage(id) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById(id).classList.add('active');
