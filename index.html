@@ -92,7 +92,6 @@ button:hover {
 <body>
 
 <audio id="music" loop>
-  <!-- GANTI dengan file mp3 kamu -->
   <source src="drive-me-crazy.mp3" type="audio/mpeg">
 </audio>
 
@@ -106,43 +105,49 @@ button:hover {
 
   <!-- HOME -->
   <div id="home" class="page">
-    <h1>Happy Valentine My Ptretty Babyy💗</h1>
+    <h1>Happy Valentine My Pretty Babyy 💗</h1>
     <p>aku buatin ini khusus buat kamu</p>
     <button onclick="playMusic()">Play Music 🎵</button>
     <button onclick="showPage('letter')">Letter ✉️</button>
   </div>
 
   <!-- LETTER -->
-<div id="letter" class="page">
-  <p>
-    haiiii... sayangkuuuuu. selamat hari valentine sayangkuuu, aku buatin ini khusus kamu sayang, 
-    aku mau bilang sama kamu kalo aku ga cuman sayang sama kamu di saat valentine aja aku selalu sayang sama kamu itu 24/7/365 hehe.<br><br>
+  <div id="letter" class="page">
+    <p>
+      haiiii... sayangkuuuuu. selamat hari valentine sayangkuuu, aku buatin ini khusus kamu sayang,
+      aku mau bilang sama kamu kalo aku ga cuman sayang sama kamu di saat valentine aja aku selalu
+      sayang sama kamu itu 24/7/365 hehe.<br><br>
 
-    oiya sayangg maafin aku yaaa kalo selalu kekanak kanakkan hehe biasalahh namanya cowo, 
-    aku cuman bisa kasih ini buat kamu sayang maaf yaa gabisa kasih yg something special i hope u like it karna aku buatnya pake hati.<br><br>
+      oiya sayangg maafin aku yaaa kalo selalu kekanak kanakkan hehe biasalahh namanya cowo,
+      aku cuman bisa kasih ini buat kamu sayang maaf yaaa gabisa kasih yg something special
+      i hope u like it karna aku buatnya pake hati.<br><br>
 
-    oiya kenapa lagunyaa ituu karna kamu membuat aku kecintaann hehehe. makasihh yaaa sayangg sudah mau sama akuuu emwahhh...
-  </p>
-  <button onclick="showPage('question')">Next 💌</button>
-</div>
+      oiya kenapa lagunyaa ituu karna kamu membuat aku kecintaann hehehe.
+      makasihh yaaa sayangg sudah mau sama akuuu emwahhh...
+    </p>
+    <button onclick="showPage('question')">Next 💌</button>
+  </div>
 
   <!-- QUESTION -->
-<div id="question" class="page">
-  <h2>kamu masih sayang aku kan? 🥺</h2>
-  <button onclick="showPage('final')">Yes 💕</button>
-  <button onclick="nope()">No</button>
-</div>
+  <div id="question" class="page">
+    <h2>youu still love me yakannn? 🥺</h2>
+
+    <p id="no-msg" style="margin:10px 0; font-size:16px;"></p>
+
+    <button onclick="showPage('final')">Yes 💕</button>
+    <button id="no-btn" onclick="nope()">No</button>
+  </div>
 
   <!-- FINAL -->
   <div id="final" class="page">
-    <h1>YEAAY KNOW IT YOU STILL LOVE MEE.. 💖</h1>
-    <p>LOVE YOU MOREEEE SAAAYAANGGKUU..</p>
+    <h1>YEAAY KNOW IT YOU STILL LOVE MEE 💖</h1>
+    <p>LOVE YOU MOREEEE SAAAYAANGGKUU 💕</p>
   </div>
 
 </div>
 
 <script>
-/* LOADING AUTO */
+/* LOADING */
 setTimeout(() => {
   showPage('home');
 }, 3000);
@@ -161,9 +166,9 @@ function playMusic() {
 
 /* NO BUTTON */
 function nope() {
-  alert("ih jangan boong 😭");
+  document.getElementById("no-msg").innerText = "ih kok bohong 😭";
+  document.getElementById("no-btn").style.display = "none";
 }
-
 
 /* FALLING EFFECT */
 setInterval(() => {
