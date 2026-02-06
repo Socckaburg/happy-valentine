@@ -91,8 +91,9 @@ button:hover {
 
 <body>
 
+<!-- 🎵 MUSIC -->
 <audio id="music" loop>
-  <source src="drive-me-crazy.mp3" type="audio/mpeg">
+  <source src="i-will-fly.mp3" type="audio/mpeg">
 </audio>
 
 <div id="app">
@@ -158,9 +159,10 @@ function showPage(id) {
   document.getElementById(id).classList.add('active');
 }
 
-/* MUSIC */
+/* 🎵 MUSIC PLAY FROM 38s */
 function playMusic() {
   const music = document.getElementById('music');
+  music.currentTime = 38;
   music.play();
 }
 
@@ -174,7 +176,7 @@ function nope() {
 setInterval(() => {
   const e = document.createElement('div');
   e.className = 'fall';
-  e.innerText = ['💗','🌸','💖'][Math.floor(Math.random()*3)];
+  e.innerText = ['💙','🌸','💙'][Math.floor(Math.random()*3)];
   e.style.left = Math.random()*100 + 'vw';
   e.style.animationDuration = (Math.random()*3+2) + 's';
   document.body.appendChild(e);
