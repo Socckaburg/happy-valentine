@@ -13,11 +13,14 @@
   font-family: Arial, sans-serif;
 }
 
+/* ===== FIX SCROLL (INI SAJA YANG DIUBAH) ===== */
 html, body {
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
+/* =========================================== */
 
 #app {
   width: 100vw;
@@ -31,12 +34,16 @@ html, body {
   position: absolute;
   inset: 0;
   display: none;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   text-align: center;
   padding: 20px;
   color: #d81b60;
+
+  /* ===== FIX SCROLL (INI SAJA YANG DITAMBAH) ===== */
+  overflow-y: auto;
+  /* ============================================= */
 }
 
 .page.active {
@@ -74,19 +81,17 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* FALLING FLOWERS */
+/* FALLING */
 .fall {
   position: absolute;
   top: -10%;
-  font-size: 22px;
+  font-size: 20px;
   animation: fall linear forwards;
   pointer-events: none;
 }
 
 @keyframes fall {
-  to {
-    transform: translateY(120vh) rotate(360deg);
-  }
+  to { transform: translateY(110vh); }
 }
 </style>
 </head>
@@ -114,52 +119,60 @@ button:hover {
   </div>
 
   <!-- LETTER -->
-  <div id="letter" class="page">
-    <p>
-      hiii.. babyku this is a small gift frome me for you, aku tau ini ga seberapa tapi aku buat ini
-      mikir sepuluh keliling buat kasih pesan yg pas dengan hati aku hehe.<br><br>
+ <div id="letter" class="page">
+  <p>
+    hiii… babyku 🤍 this is a small gift from me for you.  
+    aku tau ini ga seberapa, tapi aku bikin ini sambil mikir berulang-ulang buat nyusun pesan
+    yang paling pas sama hati aku. hehe.<br><br>
 
-      babyy sometimes i thinkk that i really deserve you????? i mean look at you, your beauty, sweet,
-      perfect, cute, and look at me im a loser, ugly hehe. i might be the luckiest bf ever thank for
-      choosing me bub.<br><br>
+    baby, sometimes I think… do I really deserve you?  
+    I mean, look at you, your beauty, your sweetness, you’re perfect, you’re cute.  
+    and then look at me… just a loser, ugly boy hehe.  
+    I might be the luckiest boyfriend ever. thank you for choosing me, bub 🥺<br><br>
 
-      selamat hari valentine yaa sayanggkuu... i keep my promise that i will never make u cry and i
-      will always be here for you if you need something im like superman and you lois lane hahayy.<br><br>
+    selamat hari valentine yaa sayanggkuu 💕  
+    I keep my promise: I will never make you cry, and I will always be here for you whenever you
+    need me. I’m like Superman, and you’re my Lois Lane hahayy.<br><br>
 
-      kamu bagaikan mahakarya yg terbaik yg pernah di ciptakan, mata km coklat di buat saat bulan
-      purnama bersinar terang menerangi dunia, rambut kamu berjatuhan seperti air terjun, bibir kamu
-      merah seperti strawberry, dan suara kamu lembut seperti sutra.<br><br>
+    kamu itu bagaikan mahakarya terbaik yang pernah diciptakan.  
+    mata coklatmu seperti dibuat saat bulan purnama bersinar terang menerangi dunia.  
+    rambutmu jatuh seperti air terjun, dan bibirmu merah seperti strawberry 🍓, dan dan suara kamu selembut sutra.<br><br>
 
-      i love looking at you cuz when i start looking at you my heart always melt. cuz you're not
-      just human being you are art. while i write this im holding my tears hardly, i really do love you,
-      i cry when you're not around, i hate when u dissapere.<br><br>
+    I love looking at you, because every time I do, my heart always melts.  
+    you’re not just human being you are art.  
+    while writing this, I’m holding my tears so hard.  
+    I really do love you. I cry when you’re not around. I hate it when you disappear.<br><br>
 
-      maafin aku kalo ini susah di baca aku gapandai menyusun kata". makasihh banyakk yaa sayang udah
-      selalu ada buat aku you were everything for me. one day you know that i have always love you.<br><br>
+    maafin aku ya kalau tulisan ini agak berantakan, aku memang ga pandai nyusun kata-kata.  
+    tapi makasih banyakk, sayang, karena kamu selalu ada buat aku.  
+    you were everything for me. one day, you’ll know that I have always loved you.<br><br>
 
-      huhu aku sedih kalo selama ini aku selalu jahat sama kamu huhu maafin aku yaa sayangg. i just
-      wanna say when i first met you i knew that we can be together forever and night we spent so
-      long until you're asleep on my lip hahaha.<br><br>
+    aku sedih kalau ingat selama ini aku sering jahat sama kamu.  
+    maafin aku yaa, sayangg…  
+    I just wanna say, the first time I met you, I knew we could be together forever.  
+    those nights we spent together until you fell asleep on my lips… hehe 🤍<br><br>
 
-      udah sampai sini aja pokoknya aku sayaaaang bangettt sama kamu. kamu selalu nanyain kalo aku
-      sayang kamu apa gk jawabannya:<br><br>
+    udah sampai sini aja yaa aku malu.  
+    pokoknya aku sayaaaang banget sama kamu.  
+    dan kalau kamu nanya aku sayang kamu atau engga, jawabannya sederhana:<br><br>
 
-      <b>Jika sayang adalah detak jantung, maka namamu yang berdegup di dalamnya.</b><br>
-      <b>Aku mencintaimu bukan hanya karena siapa kamu, tapi menjadi apa aku saat bersamamu.</b><br><br>
+    <b>Jika sayang adalah detak jantung, maka namamu yang berdegup di dalamnya.</b><br>
+    <b>Aku mencintaimu bukan hanya karena siapa kamu, tapi karena siapa aku saat bersamamu.</b><br><br>
 
-      yaaa begitulah pokoknyaa aku sayangg bangett mwahh haha maaf yaa kalo lebay dan alay namanya
-      juga kecintaan, cuz you know its very hard for me to get myself close to you.<br><br>
+    maaf yaa kalau ini lebay dan alay, namanya juga lagi kecintaan hehe.  
+    you know how hard it was for me to get myself close to you.  
+    but I did it, because it’s you.<br><br>
 
-      byebuii yeaayy HAPPY VALENTINE DAY SWITI 💕
-    </p>
+    byebuii… yeaayy 🤍  
+    HAPPY VALENTINE DAY, SWITI 💕
+  </p>
 
-    <button onclick="showPage('question')">Next 💌</button>
-  </div>
-
+  <button onclick="showPage('question')">Next 💌</button>
+</div>
   <!-- QUESTION -->
   <div id="question" class="page">
     <h2>youu still love me yakannn? 🥺</h2>
-    <p id="no-msg" style="margin:10px 0;"></p>
+    <p id="no-msg" style="margin:10px 0; font-size:16px;"></p>
 
     <button onclick="showPage('final')">Yes 💕</button>
     <button id="no-btn" onclick="nope()">No</button>
@@ -174,18 +187,15 @@ button:hover {
 </div>
 
 <script>
-// LOADING
 setTimeout(() => {
   showPage('home');
 }, 3000);
 
-// PAGE SWITCH
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 
-// MUSIC (mulai dari detik 38)
 let musicStarted = false;
 function playMusic() {
   const music = document.getElementById('music');
@@ -196,21 +206,19 @@ function playMusic() {
   }
 }
 
-// NO BUTTON
 function nope() {
-  document.getElementById("no-msg").innerText = "ih kok bohong 😭 pencet yes ajaa";
+  document.getElementById("no-msg").innerText = "ih kok bohong 😭";
   document.getElementById("no-btn").style.display = "none";
 }
 
-// FALLING FLOWERS
 setInterval(() => {
-  const f = document.createElement('div');
-  f.className = 'fall';
-  f.innerText = ['💙','🌸','💙'][Math.floor(Math.random()*3)];
-  f.style.left = Math.random() * 100 + 'vw';
-  f.style.animationDuration = (Math.random()*3 + 3) + 's';
-  document.body.appendChild(f);
-  setTimeout(() => f.remove(), 6000);
+  const e = document.createElement('div');
+  e.className = 'fall';
+  e.innerText = ['💗','🌸','💖'][Math.floor(Math.random()*3)];
+  e.style.left = Math.random()*100 + 'vw';
+  e.style.animationDuration = (Math.random()*3+2) + 's';
+  document.body.appendChild(e);
+  setTimeout(() => e.remove(), 5000);
 }, 300);
 </script>
 
